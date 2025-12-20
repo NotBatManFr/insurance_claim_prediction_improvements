@@ -32,9 +32,6 @@ class TestInsurancePreprocessor(unittest.TestCase):
         self.assertEqual(X['length'].dtype, float)
         
         # 4. Check One-Hot Encoding (transmission_type should generate columns)
-        # Note: drop_first=True means one category is dropped.
-        # If we have Manual and Automatic, one column usually remains or changes based on data.
-        # We just check that the original column is gone and encoded cols exist.
         self.assertNotIn('transmission_type', X.columns)
         
         # 5. Check Target separation
