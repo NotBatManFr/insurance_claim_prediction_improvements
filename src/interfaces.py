@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import pandas as pd
-from typing import Tuple
+from typing import Tuple, Dict, List, Optional
 
 class IDataLoader(ABC):
     @abstractmethod
