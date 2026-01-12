@@ -9,10 +9,8 @@ if [ -d "venv" ]; then
     pip install -r requirements.txt
 fi
 
-
-
-echo "🚀 Running Tests with Coverage..."
-coverage run -m unittest discover tests
+echo "🚀 Running Tests with Coverage using pytest (verbose output)..."
+coverage run -m pytest -v --tb=long
 echo ""
 
 echo "📊 Generating Coverage Report..."

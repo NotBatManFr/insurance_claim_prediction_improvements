@@ -42,3 +42,27 @@ class TestInsurancePreprocessor(unittest.TestCase):
         bad_data = self.raw_data.drop(columns=['is_claim'])
         with self.assertRaises(ValueError):
             self.processor.process(bad_data)
+            
+    def test_process_handles_missing_ncap_rating_gracefully(self):
+        raw_data = pd.DataFrame({
+            'policy_id': ['a','b'],
+            'is_parking_camera': ['Yes', 'No'],
+            'is_claim': [1, 0],
+            'length': [4000, 4200],
+            'transmission_type': ['Manual', 'Automatic']
+        })
+
+        # Should not raise and NCAP_Rating should not be present in X
+        X, y = self.processor.process(raw_data)
+        self.assertNotIn('NCAP_Rating', X.columns)
+        self.assertEqual(len(y), 2)
+
+    def test_process_raises_when_target_missing(self):
+        raw_data = pd.DataFrame({
+            'policy_id': ['a','b'],
+            'is_parking_camera': ['Yes', 'No'],
+            'length': [4000, 4200]
+        })
+
+        with self.assertRaises(ValueError):
+            self.processor.process(raw_data)
