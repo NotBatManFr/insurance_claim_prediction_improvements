@@ -38,7 +38,7 @@ def main():
 
         # 2. Dependencies
         loader = CSVLoader(config.data_path)
-        preprocessor = InsurancePreprocessor()
+        preprocessor = InsurancePreprocessor(config)
         
         # 3. Visualizer (optional)
         visualizer = None if args.no_viz else MatplotlibVisualizer(output_dir=args.viz_dir)
