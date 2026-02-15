@@ -1,0 +1,25 @@
+name: Prediction Model CI (Docker)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "Building the Docker image..."
+          docker build -t prediction-app:latest .
+
+      - name: Run Tests and Check Coverage
+        run: |
+          echo "Running tests inside the container..."
+          docker run prediction-app:latest sh -c "pytest && coverage report -m --fail-under=80"
