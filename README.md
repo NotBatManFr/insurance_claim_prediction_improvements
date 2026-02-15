@@ -45,7 +45,7 @@ Our Docker configuration is optimized for production and CI/CD pipelines. Unlike
 3.  **Run the CI Test Suite via Docker:**
     Our CI pipeline (e.g., GitHub Actions) uses this exact command to verify the container integrity before deployment. You can run it locally to mimic the CI pipeline:
     ```bash
-    docker run insurance-app:latest sh -c "pytest && coverage report -m --fail-under=80"
+    docker run insurance-app:latest sh -c "coverage run -m pytest && coverage report -m --fail-under=80"
     ```
 
 ## Repository Cleanup Note
