@@ -5,7 +5,7 @@ from .interfaces import IPreprocessor
 from typing import Tuple
 from .config import AppConfig
 
-class InsurancePreprocessor(IPreprocessor):
+class Preprocessor(IPreprocessor):
     """
     Preprocessor that uses FeatureConfig for column treatment.
     

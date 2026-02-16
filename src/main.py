@@ -10,7 +10,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from src.config import AppConfig
 from src.data_loader import CSVLoader
-from src.preprocessor import InsurancePreprocessor
+from src.preprocessor import Preprocessor
 # from src.models import SklearnModelAdapter
 from src.model_factory import ModelFactory
 from src.pipeline import PipelineOrchestrator
