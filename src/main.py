@@ -4,14 +4,9 @@ import argparse
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-# from sklearn.linear_model import LogisticRegression
-# from sklearn.tree import DecisionTreeClassifier
-# from sklearn.ensemble import RandomForestClassifier
-
 from src.config import AppConfig
 from src.data_loader import CSVLoader
 from src.preprocessor import Preprocessor
-# from src.models import SklearnModelAdapter
 from src.model_factory import ModelFactory
 from src.pipeline import PipelineOrchestrator
 from src.visualizer import MatplotlibVisualizer
@@ -40,7 +35,7 @@ def main():
 
         # 2. Dependencies
         loader = CSVLoader(config.data_path)
-        preprocessor = InsurancePreprocessor(config)
+        preprocessor = Preprocessor(config)
         
         # 3. Visualizer (optional)
         visualizer = None if args.no_viz else MatplotlibVisualizer(output_dir=args.viz_dir)
