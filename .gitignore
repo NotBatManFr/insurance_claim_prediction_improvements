@@ -9,6 +9,7 @@ __pycache__/
 # local only
 local/
 .pytest_cache/
+pytest.ini
 
 # misc
 .coverage
